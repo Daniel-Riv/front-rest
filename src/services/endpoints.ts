@@ -13,6 +13,9 @@ export const endpoints = {
   users: {
     me: '/users/me',
   },
+  menus: {
+    byRole: (roleId: number) => `/menus/role/${roleId}`,
+  },
 } as const;
 
 /**

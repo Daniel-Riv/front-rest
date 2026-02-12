@@ -1,7 +1,15 @@
+export type UserColors = {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+};
+
 export type AuthUser = {
-  id: string;
+  id: number | string;
   email: string;
   name?: string;
+  roleIds?: number[];
+  colors?: UserColors;
 };
 
 export type LoginRequest = {
