@@ -10,6 +10,7 @@ import { getApiErrorMessage } from '@/services/http';
 import type { RoleMenu, RoleSubmenu } from '@/types/menu';
 import type { UserColors } from '@/types/auth';
 import TablesWorkspace from '@/components/app/TablesWorkspace';
+import VenderMesasWorkspace from '@/components/app/VenderMesasWorkspace';
 import BusinessInfoWorkspace from '@/components/app/BusinessInfoWorkspace';
 import ProductCategoriesWorkspace from '@/components/app/ProductCategoriesWorkspace';
 import ProductUnitsWorkspace from '@/components/app/ProductUnitsWorkspace';
@@ -114,7 +115,8 @@ export default function RoleMenuSidebarScreen() {
     pathname === '/configuracion/mesas' ||
     pathname.startsWith('/configuracion/mesas/') ||
     pathname === '/configuracion/crear-mesas' ||
-    pathname.startsWith('/configuracion/crear-mesas/') ||
+    pathname.startsWith('/configuracion/crear-mesas/');
+  const isVenderMesasRoute =
     pathname === '/vender/mesas' ||
     pathname.startsWith('/vender/mesas/');
   const isBusinessInfoRoute =
@@ -308,7 +310,9 @@ export default function RoleMenuSidebarScreen() {
       ) : null}
 
       <View style={styles.contentWrap}>
-        {isTablesRoute ? (
+        {isVenderMesasRoute ? (
+          <VenderMesasWorkspace primary={palette.primary} secondary={palette.secondary} tertiary={palette.tertiary} />
+        ) : isTablesRoute ? (
           <TablesWorkspace primary={palette.primary} secondary={palette.secondary} tertiary={palette.tertiary} />
         ) : isBusinessInfoRoute ? (
           <BusinessInfoWorkspace primary={palette.primary} secondary={palette.secondary} tertiary={palette.tertiary} />
@@ -446,7 +450,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   errorText: { fontWeight: '700', flex: 1 },
-  contentWrap: { flex: 1, padding: 16 },
+  contentWrap: { flex: 1, padding: 0 },
   heroCard: {
     flex: 1,
     borderRadius: 20,
